@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.WebMVC", "D:\TFS\Microservices\Microservices.WebMVC\Microservices.WebMVC.csproj", "{88A01C63-1D47-4E30-A283-6AB70474DBE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.WebMVC", "D:\TFS\Microservices\Microservices.WebMVC\Microservices.WebMVC.csproj", "{88A01C63-1D47-4E30-A283-6AB70474DBE5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Webs", "Webs", "{132F805B-C78D-488E-BD6C-1EB64E236A26}"
 EndProject
@@ -13,7 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HealthChecks", "HealthChecks", "{4FF7D4AA-9DA9-40C8-BAC8-68FFEBC45BE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNetCore.HealthChecks", "Microsoft.AspNetCore.HealthChecks\Microsoft.AspNetCore.HealthChecks.csproj", "{A9252037-12EA-4427-8D4F-2EDE20701A16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.AspNetCore.HealthChecks", "Microsoft.AspNetCore.HealthChecks\Microsoft.AspNetCore.HealthChecks.csproj", "{A9252037-12EA-4427-8D4F-2EDE20701A16}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebHost", "WebHost", "{4BF8B385-B390-4ED0-8000-CB3963AF0C30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHost.Customization", "WebHost.Customization\WebHost.Customization.csproj", "{24FFF702-3437-40C8-ABD8-747279C7C9E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Extensions.HealthChecks", "Microsoft.Extensions.HealthChecks\Microsoft.Extensions.HealthChecks.csproj", "{70658298-A0F9-4DBB-A292-3F1E7603A025}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +35,14 @@ Global
 		{A9252037-12EA-4427-8D4F-2EDE20701A16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9252037-12EA-4427-8D4F-2EDE20701A16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9252037-12EA-4427-8D4F-2EDE20701A16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24FFF702-3437-40C8-ABD8-747279C7C9E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24FFF702-3437-40C8-ABD8-747279C7C9E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24FFF702-3437-40C8-ABD8-747279C7C9E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24FFF702-3437-40C8-ABD8-747279C7C9E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70658298-A0F9-4DBB-A292-3F1E7603A025}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70658298-A0F9-4DBB-A292-3F1E7603A025}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70658298-A0F9-4DBB-A292-3F1E7603A025}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70658298-A0F9-4DBB-A292-3F1E7603A025}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +53,9 @@ Global
 		{763A5675-043C-42E2-AC04-50038CECC6A4} = {FA5D42A4-1ACE-4AB9-936A-382EF25A145D}
 		{4FF7D4AA-9DA9-40C8-BAC8-68FFEBC45BE4} = {763A5675-043C-42E2-AC04-50038CECC6A4}
 		{A9252037-12EA-4427-8D4F-2EDE20701A16} = {4FF7D4AA-9DA9-40C8-BAC8-68FFEBC45BE4}
+		{4BF8B385-B390-4ED0-8000-CB3963AF0C30} = {763A5675-043C-42E2-AC04-50038CECC6A4}
+		{24FFF702-3437-40C8-ABD8-747279C7C9E1} = {4BF8B385-B390-4ED0-8000-CB3963AF0C30}
+		{70658298-A0F9-4DBB-A292-3F1E7603A025} = {4FF7D4AA-9DA9-40C8-BAC8-68FFEBC45BE4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {10C6B3CD-C162-4B6D-88AF-158F408534E1}

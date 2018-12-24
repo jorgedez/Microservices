@@ -1,5 +1,7 @@
 namespace Microservices.WebMVC
 {
+    using Microservices.WebMVC.Infrastructure;
+    using Microservices.WebMVC.Infrastructure.Middlewares;
     using Microsoft.ApplicationInsights.Extensibility;
     using Microsoft.ApplicationInsights.ServiceFabric;
     using Microsoft.AspNetCore.Authentication.Cookies;
@@ -8,16 +10,18 @@ namespace Microservices.WebMVC
     using Microsoft.AspNetCore.DataProtection;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
+    //using Microsoft.eShopOnContainers.WebMVC.Services;
+    //using Microsoft.eShopOnContainers.WebMVC.ViewModels;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.HealthChecks;
     using Microsoft.Extensions.Logging;
     using Polly;
     using Polly.Extensions.Http;
     using StackExchange.Redis;
     using System;
+    using System.IdentityModel.Tokens.Jwt;
     using System.Net.Http;
-    using WebMVC.Infrastructure;
-
 
     public class Startup
     {
@@ -28,23 +32,25 @@ namespace Microservices.WebMVC
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        // This method gets called by the runtime. Use this method to add services to the IoC container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
-
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddAppInsight(Configuration)
+                    .AddHealthChecks(Configuration)
+                    .AddCustomMvc(Configuration)
+                    .AddHttpClientServices(Configuration)
+                    //.AddHttpClientLogging(Configuration)  //Opt-in HttpClientLogging config
+                    .AddCustomAuthentication(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+
+            loggerFactory.AddAzureWebAppDiagnostics();
+            loggerFactory.AddApplicationInsights(app.ApplicationServices, LogLevel.Trace);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -52,19 +58,50 @@ namespace Microservices.WebMVC
             else
             {
                 app.UseExceptionHandler("/Error");
-                app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseCookiePolicy();
+            var pathBase = Configuration["PATH_BASE"];
+            if (!string.IsNullOrEmpty(pathBase))
+            {
+                loggerFactory.CreateLogger("init").LogDebug($"Using PATH BASE '{pathBase}'");
+                app.UsePathBase(pathBase);
+            }
 
-            app.UseMvc();
+
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+            app.Map("/liveness", lapp => lapp.Run(async ctx => ctx.Response.StatusCode = 200));
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+
+            app.UseSession();
+            app.UseStaticFiles();
+
+            if (Configuration.GetValue<bool>("UseLoadTest"))
+            {
+                app.UseMiddleware<ByPassAuthMiddleware>();
+            }
+
+            app.UseAuthentication();
+
+            var log = loggerFactory.CreateLogger("identity");
+
+            WebContextSeed.Seed(app, env, loggerFactory);
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Catalog}/{action=Index}/{id?}");
+
+                routes.MapRoute(
+                    name: "defaultError",
+                    template: "{controller=Error}/{action=Error}");
+            });
         }
     }
 
     static class ServiceCollectionExtensions
     {
+
         public static IServiceCollection AddAppInsight(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddApplicationInsightsTelemetry(configuration);
@@ -126,6 +163,7 @@ namespace Microservices.WebMVC
             return services;
         }
 
+        // Adds all Http client services (like Service-Agents) using resilient Http requests based on HttpClient factory and Polly's policies 
         public static IServiceCollection AddHttpClientServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -164,7 +202,7 @@ namespace Microservices.WebMVC
             //   .AddPolicyHandler(GetRetryPolicy())
             //   .AddPolicyHandler(GetCircuitBreakerPolicy());
 
-            //add custom application services
+            ////add custom application services
             //services.AddTransient<IIdentityParser<ApplicationUser>, IdentityParser>();
 
             return services;
