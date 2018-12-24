@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.WebMVC", "D:\TFS\Microservices\Microservices.WebMVC\Microservices.WebMVC.csproj", "{88A01C63-1D47-4E30-A283-6AB70474DBE5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Webs", "Webs", "{132F805B-C78D-488E-BD6C-1EB64E236A26}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FA5D42A4-1ACE-4AB9-936A-382EF25A145D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{763A5675-043C-42E2-AC04-50038CECC6A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HealthChecks", "HealthChecks", "{4FF7D4AA-9DA9-40C8-BAC8-68FFEBC45BE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNetCore.HealthChecks", "Microsoft.AspNetCore.HealthChecks\Microsoft.AspNetCore.HealthChecks.csproj", "{A9252037-12EA-4427-8D4F-2EDE20701A16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88A01C63-1D47-4E30-A283-6AB70474DBE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88A01C63-1D47-4E30-A283-6AB70474DBE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88A01C63-1D47-4E30-A283-6AB70474DBE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88A01C63-1D47-4E30-A283-6AB70474DBE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9252037-12EA-4427-8D4F-2EDE20701A16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9252037-12EA-4427-8D4F-2EDE20701A16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9252037-12EA-4427-8D4F-2EDE20701A16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9252037-12EA-4427-8D4F-2EDE20701A16}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{88A01C63-1D47-4E30-A283-6AB70474DBE5} = {132F805B-C78D-488E-BD6C-1EB64E236A26}
+		{132F805B-C78D-488E-BD6C-1EB64E236A26} = {FA5D42A4-1ACE-4AB9-936A-382EF25A145D}
+		{763A5675-043C-42E2-AC04-50038CECC6A4} = {FA5D42A4-1ACE-4AB9-936A-382EF25A145D}
+		{4FF7D4AA-9DA9-40C8-BAC8-68FFEBC45BE4} = {763A5675-043C-42E2-AC04-50038CECC6A4}
+		{A9252037-12EA-4427-8D4F-2EDE20701A16} = {4FF7D4AA-9DA9-40C8-BAC8-68FFEBC45BE4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {10C6B3CD-C162-4B6D-88AF-158F408534E1}
+	EndGlobalSection
+EndGlobal
