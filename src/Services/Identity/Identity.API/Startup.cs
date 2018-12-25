@@ -13,7 +13,6 @@ namespace Identity.API
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
-    using Microsoft.eShopOnContainers.Services.Identity.API.Certificates;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
@@ -21,6 +20,7 @@ namespace Identity.API
     using StackExchange.Redis;
     using System;
     using System.Reflection;
+    using Microservices.Services.Identity.API.Certificates;
 
     public class Startup
     {
