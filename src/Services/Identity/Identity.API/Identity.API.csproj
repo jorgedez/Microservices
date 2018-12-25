@@ -57,6 +57,8 @@
 
   <ItemGroup>
     <Folder Include="Extensions\" />
+    <Folder Include="Views\" />
+    <Folder Include="Setup\" />
   </ItemGroup>
 
 
