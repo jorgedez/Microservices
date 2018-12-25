@@ -25,7 +25,13 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Extensions.HealthChecks.AzureStorage", "src\BuildingBlocks\HealthChecks\src\Microsoft.Extensions.HealthChecks.AzureStorage\Microsoft.Extensions.HealthChecks.AzureStorage.csproj", "{088DCCDC-9AC4-4B80-BA1A-D49EED26F7DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Extensions.HealthChecks.SqlServer", "src\BuildingBlocks\HealthChecks\src\Microsoft.Extensions.HealthChecks.SqlServer\Microsoft.Extensions.HealthChecks.SqlServer.csproj", "{4C9C3F96-33E8-4172-8E6D-28D99D691208}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Extensions.HealthChecks.SqlServer", "src\BuildingBlocks\HealthChecks\src\Microsoft.Extensions.HealthChecks.SqlServer\Microsoft.Extensions.HealthChecks.SqlServer.csproj", "{4C9C3F96-33E8-4172-8E6D-28D99D691208}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{E4E442B2-97C1-45A1-85FD-6B68D0A4E491}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{2436425A-46F6-4549-AB0D-863FC3281CEF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.API", "src\Services\Identity\Identity.API\Identity.API.csproj", "{BBA179EA-9EE1-43F8-B112-5B0129CB3759}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +67,10 @@ Global
 		{4C9C3F96-33E8-4172-8E6D-28D99D691208}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C9C3F96-33E8-4172-8E6D-28D99D691208}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C9C3F96-33E8-4172-8E6D-28D99D691208}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBA179EA-9EE1-43F8-B112-5B0129CB3759}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBA179EA-9EE1-43F8-B112-5B0129CB3759}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBA179EA-9EE1-43F8-B112-5B0129CB3759}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBA179EA-9EE1-43F8-B112-5B0129CB3759}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +86,9 @@ Global
 		{FD386E94-9C51-44AE-8979-6E55D8E8398A} = {4FF7D4AA-9DA9-40C8-BAC8-68FFEBC45BE4}
 		{088DCCDC-9AC4-4B80-BA1A-D49EED26F7DA} = {4FF7D4AA-9DA9-40C8-BAC8-68FFEBC45BE4}
 		{4C9C3F96-33E8-4172-8E6D-28D99D691208} = {4FF7D4AA-9DA9-40C8-BAC8-68FFEBC45BE4}
+		{E4E442B2-97C1-45A1-85FD-6B68D0A4E491} = {FA5D42A4-1ACE-4AB9-936A-382EF25A145D}
+		{2436425A-46F6-4549-AB0D-863FC3281CEF} = {E4E442B2-97C1-45A1-85FD-6B68D0A4E491}
+		{BBA179EA-9EE1-43F8-B112-5B0129CB3759} = {2436425A-46F6-4549-AB0D-863FC3281CEF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {10C6B3CD-C162-4B6D-88AF-158F408534E1}
