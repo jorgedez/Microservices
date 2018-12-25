@@ -1,5 +1,6 @@
-﻿namespace Microsoft.Extensions.HealthChecks.Checks
+﻿namespace Microsoft.Extensions.HealthChecks
 {
+    using Microsoft.Extensions.HealthChecks.Internal;
     using System;
     using System.Net.Http;
     using System.Threading.Tasks;

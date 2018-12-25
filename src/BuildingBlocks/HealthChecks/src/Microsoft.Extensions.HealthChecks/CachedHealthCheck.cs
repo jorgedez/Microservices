@@ -1,5 +1,6 @@
 ﻿namespace Microsoft.Extensions.HealthChecks
 {
+    using Microsoft.Extensions.DependencyInjection;
     using System;
     using System.Reflection;
     using System.Threading;

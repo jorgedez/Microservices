@@ -10,8 +10,6 @@ namespace Microservices.WebMVC
     using Microsoft.AspNetCore.DataProtection;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
-    //using Microsoft.eShopOnContainers.WebMVC.Services;
-    //using Microsoft.eShopOnContainers.WebMVC.ViewModels;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.HealthChecks;
