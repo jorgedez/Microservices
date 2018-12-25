@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  microservices.webmvc:
+    image: ${DOCKER_REGISTRY-}microserviceswebmvc
+    build:
+      context: .
+      dockerfile: src/Web/Microservices.WebMVC/Dockerfile
