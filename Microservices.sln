@@ -23,6 +23,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.AspNetCore.Health
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{326AF2E6-7B68-4AFC-91CD-6FBE07A4E78D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Extensions.HealthChecks.AzureStorage", "src\BuildingBlocks\HealthChecks\src\Microsoft.Extensions.HealthChecks.AzureStorage\Microsoft.Extensions.HealthChecks.AzureStorage.csproj", "{088DCCDC-9AC4-4B80-BA1A-D49EED26F7DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Extensions.HealthChecks.SqlServer", "src\BuildingBlocks\HealthChecks\src\Microsoft.Extensions.HealthChecks.SqlServer\Microsoft.Extensions.HealthChecks.SqlServer.csproj", "{4C9C3F96-33E8-4172-8E6D-28D99D691208}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,14 @@ Global
 		{326AF2E6-7B68-4AFC-91CD-6FBE07A4E78D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{326AF2E6-7B68-4AFC-91CD-6FBE07A4E78D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{326AF2E6-7B68-4AFC-91CD-6FBE07A4E78D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{088DCCDC-9AC4-4B80-BA1A-D49EED26F7DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{088DCCDC-9AC4-4B80-BA1A-D49EED26F7DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{088DCCDC-9AC4-4B80-BA1A-D49EED26F7DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{088DCCDC-9AC4-4B80-BA1A-D49EED26F7DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C9C3F96-33E8-4172-8E6D-28D99D691208}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C9C3F96-33E8-4172-8E6D-28D99D691208}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C9C3F96-33E8-4172-8E6D-28D99D691208}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C9C3F96-33E8-4172-8E6D-28D99D691208}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +74,8 @@ Global
 		{3F2D880F-74B5-441F-A438-3B797FEC5F9B} = {4BF8B385-B390-4ED0-8000-CB3963AF0C30}
 		{3419D936-E8B4-4529-B417-1740E6EE3251} = {132F805B-C78D-488E-BD6C-1EB64E236A26}
 		{FD386E94-9C51-44AE-8979-6E55D8E8398A} = {4FF7D4AA-9DA9-40C8-BAC8-68FFEBC45BE4}
+		{088DCCDC-9AC4-4B80-BA1A-D49EED26F7DA} = {4FF7D4AA-9DA9-40C8-BAC8-68FFEBC45BE4}
+		{4C9C3F96-33E8-4172-8E6D-28D99D691208} = {4FF7D4AA-9DA9-40C8-BAC8-68FFEBC45BE4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {10C6B3CD-C162-4B6D-88AF-158F408534E1}
