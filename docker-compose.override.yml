@@ -1,16 +1,14 @@
 version: '3.4'
 
 services:
-  microservices.webmvc:
+  identity.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_HTTPS_PORT=44353
-      - CatalogUrlHC=http://www.google.es
-
+      - ASPNETCORE_HTTPS_PORT=44361
     ports:
-      - "55395:80"
-      - "44353:443"
+      - "64845:80"
+      - "44361:443"
     volumes:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro

@@ -1,8 +1,8 @@
 version: '3.4'
 
 services:
-   microservices.webmvc:
-    image: ${DOCKER_REGISTRY-}microserviceswebmvc
+  identity.api:
+    image: ${DOCKER_REGISTRY-}identityapi
     build:
       context: .
-      dockerfile: src/Web/Microservices.WebMVC/Dockerfile
+      dockerfile: src/Services/Identity/Identity.API/Dockerfile
