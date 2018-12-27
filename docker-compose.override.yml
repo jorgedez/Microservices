@@ -5,15 +5,26 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
+      - OrchestratorType=K8S
     ports:
-      - "5105:80"
+      - "5105:80"   
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:C:\Users\ContainerUser\AppData\Roaming\ASP.NET\Https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:C:\Users\ContainerUser\AppData\Roaming\Microsoft\UserSecrets:ro
 
   microservices.webmvc:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
-      - IdentityUrl=http://10.0.75.1:5105 
-      - ASPNETCORE_HTTPS_PORT=44353                 
-      - CatalogUrlHC=https://www.google.es 
+      - CatalogUrlHC=https://www.google.es
+      - OrchestratorType=K8S
+      - UseLoadTest=${USE_LOADTEST:-False}
     ports:
       - "5100:80"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:C:\Users\ContainerUser\AppData\Roaming\ASP.NET\Https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:C:\Users\ContainerUser\AppData\Roaming\Microsoft\UserSecrets:ro
+networks:
+  default:
+    external:
+      name: nat
