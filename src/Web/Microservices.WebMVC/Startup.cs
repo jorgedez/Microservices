@@ -132,10 +132,10 @@ namespace Microservices.WebMVC
                 }
 
                 checks.AddUrlCheck(configuration["CatalogUrlHC"], TimeSpan.FromMinutes(minutes));
-                checks.AddUrlCheck(configuration["OrderingUrlHC"], TimeSpan.FromMinutes(minutes));
-                checks.AddUrlCheck(configuration["BasketUrlHC"], TimeSpan.Zero); //No cache for this HealthCheck, better just for demos 
-                checks.AddUrlCheck(configuration["IdentityUrlHC"], TimeSpan.FromMinutes(minutes));
-                checks.AddUrlCheck(configuration["MarketingUrlHC"], TimeSpan.FromMinutes(minutes));
+                //checks.AddUrlCheck(configuration["OrderingUrlHC"], TimeSpan.FromMinutes(minutes));
+                //checks.AddUrlCheck(configuration["BasketUrlHC"], TimeSpan.Zero); //No cache for this HealthCheck, better just for demos 
+                //checks.AddUrlCheck(configuration["IdentityUrlHC"], TimeSpan.FromMinutes(minutes));
+                //checks.AddUrlCheck(configuration["MarketingUrlHC"], TimeSpan.FromMinutes(minutes));
             });
 
             return services;

@@ -31,7 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{24
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.API", "src\Services\Identity\Identity.API\Identity.API.csproj", "{BBA179EA-9EE1-43F8-B112-5B0129CB3759}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C07C6DBA-ACAC-4203-B28D-F098F63D1EC5}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{6F96CAF4-BF2A-4F5C-AA07-D3027CE44B6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,10 +67,10 @@ Global
 		{BBA179EA-9EE1-43F8-B112-5B0129CB3759}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBA179EA-9EE1-43F8-B112-5B0129CB3759}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBA179EA-9EE1-43F8-B112-5B0129CB3759}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C07C6DBA-ACAC-4203-B28D-F098F63D1EC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C07C6DBA-ACAC-4203-B28D-F098F63D1EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C07C6DBA-ACAC-4203-B28D-F098F63D1EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C07C6DBA-ACAC-4203-B28D-F098F63D1EC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F96CAF4-BF2A-4F5C-AA07-D3027CE44B6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F96CAF4-BF2A-4F5C-AA07-D3027CE44B6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F96CAF4-BF2A-4F5C-AA07-D3027CE44B6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F96CAF4-BF2A-4F5C-AA07-D3027CE44B6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

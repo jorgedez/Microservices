@@ -6,3 +6,9 @@ services:
     build:
       context: .
       dockerfile: src/Services/Identity/Identity.API/Dockerfile
+
+  microservices.webmvc:
+    image: ${DOCKER_REGISTRY-}microserviceswebmvc
+    build:
+      context: .
+      dockerfile: src/Web/Microservices.WebMVC/Dockerfile
