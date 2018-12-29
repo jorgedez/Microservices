@@ -5,7 +5,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
-      - OrchestratorType=K8S
+      - OrchestratorType=TEST
     ports:
       - "5105:80"   
     volumes:
@@ -16,8 +16,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
-      - CatalogUrlHC=https://www.google.es
-      - OrchestratorType=K8S
+      - CatalogUrlHC=http://www.google.es
+      - OrchestratorType=TEST
       - UseLoadTest=${USE_LOADTEST:-False}
     ports:
       - "5100:80"
