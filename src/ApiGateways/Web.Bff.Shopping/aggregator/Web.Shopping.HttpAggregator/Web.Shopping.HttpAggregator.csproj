@@ -5,6 +5,7 @@
     <AssemblyName>Web.Shopping.HttpAggregator</AssemblyName>
     <RootNamespace>Web.Shopping.HttpAggregator</RootNamespace>
     <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>0bdca5ed-7f0f-4239-a346-2b5a33bb2e0a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
