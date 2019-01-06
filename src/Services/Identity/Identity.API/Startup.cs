@@ -2,9 +2,6 @@ namespace Identity.API
 {
     using Autofac;
     using Autofac.Extensions.DependencyInjection;
-    using Identity.API.Data;
-    using Identity.API.Models;
-    using Identity.API.Services;
     using IdentityServer4.Services;
     using Microsoft.ApplicationInsights.Extensibility;
     using Microsoft.ApplicationInsights.ServiceFabric;
@@ -12,14 +9,20 @@ namespace Identity.API
     using Microsoft.AspNetCore.DataProtection;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
-    using Microsoft.Extensions.HealthChecks;
     using StackExchange.Redis;
     using System;
     using System.Reflection;
+    using HealthChecks.UI.Client;
+    using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+    using Microsoft.Extensions.Diagnostics.HealthChecks;
+    using Identity.API.Data;
+    using Identity.API.Services;
+    using Identity.API.Models;
     using Microservices.Services.Identity.API.Certificates;
 
     public class Startup
@@ -52,7 +55,8 @@ namespace Identity.API
 
             services.Configure<AppSettings>(Configuration);
 
-            services.AddMvc();
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             if (Configuration.GetValue<string>("IsClusterEnv") == bool.TrueString)
             {
@@ -63,15 +67,11 @@ namespace Identity.API
                 .PersistKeysToRedis(ConnectionMultiplexer.Connect(Configuration["DPConnectionString"]), "DataProtection-Keys");
             }
 
-            services.AddHealthChecks(checks =>
-            {
-                var minutes = 1;
-                if (int.TryParse(Configuration["HealthCheck:Timeout"], out var minutesParsed))
-                {
-                    minutes = minutesParsed;
-                }
-                checks.AddSqlCheck("Identity_Db", Configuration["ConnectionString"], TimeSpan.FromMinutes(minutes));
-            });
+            services.AddHealthChecks()
+                .AddCheck("self", () => HealthCheckResult.Healthy())
+                .AddSqlServer(Configuration["ConnectionString"],
+                    name: "IdentityDB-check",
+                    tags: new string[] { "IdentityDB" });
 
             services.AddTransient<ILoginService<ApplicationUser>, EFLoginService>();
             services.AddTransient<IRedirectService, RedirectService>();
@@ -140,10 +140,16 @@ namespace Identity.API
                 app.UsePathBase(pathBase);
             }
 
+            app.UseHealthChecks("/hc", new HealthCheckOptions()
+            {
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
 
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-            app.Map("/liveness", lapp => lapp.Run(async ctx => ctx.Response.StatusCode = 200));
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+            app.UseHealthChecks("/liveness", new HealthCheckOptions
+            {
+                Predicate = r => r.Name.Contains("self")
+            });
 
             app.UseStaticFiles();
 
@@ -159,6 +165,7 @@ namespace Identity.API
             // Adds IdentityServer
             app.UseIdentityServer();
 
+            app.UseHttpsRedirection();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
