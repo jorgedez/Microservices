@@ -1,12 +1,6 @@
 version: '3.4'
 
 services:
-  sql.data:
-    image: microsoft/mssql-server-linux:2017-latest
-
-  nosql.data:
-    image: mongo
-
   basket.data:
     image: redis:alpine
 
@@ -18,5 +12,3 @@ services:
     build:
       context: .
       dockerfile: src/Services/Identity/Identity.API/Dockerfile    
-    depends_on:
-      - sql.data
