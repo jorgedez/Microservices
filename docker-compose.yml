@@ -12,3 +12,11 @@ services:
     build:
       context: .
       dockerfile: src/Services/Identity/Identity.API/Dockerfile    
+  
+  catalog.api:
+    image: eshop/catalog.api:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: src/Services/Catalog/Catalog.API/Dockerfile
+    depends_on:
+      - rabbitmq
